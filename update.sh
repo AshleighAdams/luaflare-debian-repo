@@ -9,6 +9,13 @@ if ! echo "abc" | gpg --passphrase "$PASSPHRASE" -o /dev/null -as; then
 	exit 1
 fi
 
+# first sign the .debs
+DEBS=`find debian -name "*.deb"`
+for deb in $DEBS; do
+	dpkg-sig -g "--passphrase \"$PASSPHRASE\"" --sign builder $deb
+done
+
+# then update the indexes
 apt-ftparchive packages debian > debian/Packages
 apt-ftparchive sources debian > debian/Sources
 apt-ftparchive release debian > debian/Release
@@ -19,12 +26,6 @@ cat debian/Sources | gzip > debian/Sources.gz
 # sign release files:
 gpg --yes --passphrase "$PASSPHRASE" --clearsign -o debian/InRelease debian/Release
 gpg --yes --passphrase "$PASSPHRASE" -abs -o debian/Release.gpg debian/Release
-
-# sign debs
-DEBS=`find debian -name "*.deb"`
-for deb in $DEBS; do
-	dpkg-sig -g "--passphrase \"$PASSPHRASE\"" --sign builder $deb
-done
 
 # output the key to the repo that was used to sign them
 gpg --yes --output debian/key --armor --export
