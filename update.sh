@@ -40,11 +40,12 @@ gpg --yes --passphrase "$PASSPHRASE" -abs -o debian/Release.gpg debian/Release
 gpg --yes --output debian/key --armor --export
 
 # Update the translations
-TRANSLATIONS=`find translate -type f`
+TRANSLATIONS=`find translate -xtype f`
 for translation in $TRANSLATIONS; do
 	name=`basename $translation`
-	cat $translation | gzip > debian/$name.gz
+	cat $translation | gzip  > debian/$name.gz
 	cat $translation | bzip2 > debian/$name.bz2
+	cat $translation         > debian/$name
 done
 
 #  deb http://kateadams.eu/ debian/
