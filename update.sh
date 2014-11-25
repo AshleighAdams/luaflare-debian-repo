@@ -1,4 +1,6 @@
 #!/bin/sh
+set -e
+
 DIALOG=whiptail
 $DIALOG --passwordbox "Please enter the passhrase to unlock the key" 10 40 2> pass.tmp
 PASSPHRASE=`cat pass.tmp`
@@ -8,6 +10,11 @@ if ! echo "abc" | gpg --passphrase "$PASSPHRASE" -o /dev/null -as; then
 	echo "bad passphrase"
 	exit 1
 fi
+
+# Create a fresh index
+rm -rf debian || true
+cp -R packages debian
+
 
 # first sign the .debs
 DEBS=`find debian -name "*.deb"`
