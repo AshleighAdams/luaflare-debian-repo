@@ -41,12 +41,30 @@ gpg --yes --output debian/key --armor --export
 
 # Update the translations
 TRANSLATIONS=`find translate -xtype f`
+[[ -d langs ]] && rm -rf langs;
+mkdir langs
 for translation in $TRANSLATIONS; do
 	name=`basename $translation`
-	cat $translation | gzip  > debian/$name.gz
-	cat $translation | bzip2 > debian/$name.bz2
-	cat $translation         > debian/$name
+	arr=(`echo $name | egrep -o "[^.]+"`)
+	pkg=${arr[0]}
+	lng=${arr[1]}
+	md5=(`cat $translation | md5sum`)
+
+	echo "Package: $pkg"         >> langs/$lng
+	echo "Description-md5: $md5" >> langs/$lng
+	echo -n "Description-$lng: " >> langs/$lng
+	cat $translation             >> langs/$lng
+	echo                         >> langs/$lng
 done
+
+LANGS=`find langs -xtype f`
+for lang in $LANGS; do
+	cat $lang | gzip > $lang.gz
+	cat $lang | bzip2 > $lang.bz2
+done
+
+mv langs/* debian/
+rm -rf langs
 
 #  deb http://kateadams.eu/ debian/
 #  deb-src http://kateadams.eu/ debian/
