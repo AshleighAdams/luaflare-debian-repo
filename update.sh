@@ -30,6 +30,6 @@ done
 gpg --yes --output debian/key --armor --export
 
 
-#  deb http://self.kateadams.eu/ debian/
-#  deb-src http://self.kateadams.eu/ debian/
-#$ curl self.kateadams.eu/debian/key | sudo apt-key add -
+#  deb http://kateadams.eu/ debian/
+#  deb-src http://kateadams.eu/ debian/
+#$ curl kateadams.eu/debian/key | sudo apt-key add -
