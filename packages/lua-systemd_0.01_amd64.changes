@@ -1,0 +1,35 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Format: 1.8
+Date: Sat, 15 Nov 2014 17:39:37 +0000
+Source: lua-systemd
+Binary: lua-systemd
+Architecture: amd64
+Version: 0.01
+Distribution: unstable
+Urgency: low
+Maintainer: Kate Adams <self@kateadams.eu>
+Changed-By: Kate Adams <self@kateadams.eu>
+Description:
+ lua-systemd - systemd for Lua
+Changes:
+ lua-systemd (0.01) unstable; urgency=low
+ .
+   * Packaged for debian
+Checksums-Sha1:
+ 70f03e899c2f250f033945880aad07bf3362c53b 8536 lua-systemd_0.01_amd64.deb
+Checksums-Sha256:
+ 8299a80a65b3fa0e67ce362352338639912fb6fcdbda0c27b34d03d4e6cff850 8536 lua-systemd_0.01_amd64.deb
+Files:
+ a4f88123d5baebf5d74b91d4e67bd3ae 8536 httpd optional lua-systemd_0.01_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iJwEAQECAAYFAlRz19QACgkQ9EHYTe1nIBJWvgP/VbUhqiD7IKBdIxbkUpXzJp9c
+bwzrWNmzqMxv0ETjp0D36Rwaz54gKmeXu+x6Jfwpq8GcmByzC/sMIPHcisHsXwnx
+oa46pss/YYF93ESRy9fyLxFAGN4aNv6jD++SsFZe7wvBZBPlyciCSo5uG26gsDxz
+PCFAgGgwiLQPYaNOw9k=
+=8r99
+-----END PGP SIGNATURE-----
