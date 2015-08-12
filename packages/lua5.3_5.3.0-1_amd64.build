@@ -1,0 +1,227 @@
+ dpkg-buildpackage -rfakeroot -D -us -uc
+dpkg-buildpackage: source package lua5.3
+dpkg-buildpackage: source version 5.3.0-1
+dpkg-buildpackage: source distribution unstable
+dpkg-buildpackage: source changed by Enrico Tassi <gareuselesinge@debian.org>
+ dpkg-source --before-build lua5.3
+dpkg-buildpackage: host architecture amd64
+ fakeroot debian/rules clean
+dh clean
+   dh_testdir
+   debian/rules override_dh_auto_clean
+make[1]: Entering directory '/mnt/hdd/kobra/.build/lua5.3'
+dh_auto_clean
+	make -j1 clean
+make[2]: Entering directory '/mnt/hdd/kobra/.build/lua5.3'
+cd src && make clean V=5.3
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lua5.3/src'
+rm -f liblua5.3.la 5.3-c++.la lua5.3 luac5.3 lapi.o lcode.o lctype.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o lmem.o lobject.o lopcodes.o lparser.o lstate.o lstring.o ltable.o ltm.o lundump.o lvm.o lzio.o lauxlib.o lbaselib.o lbitlib.o lcorolib.o ldblib.o liolib.o lmathlib.o loslib.o lstrlib.o ltablib.o lutf8lib.o loadlib.o linit.o  lua.o luac.o
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lua5.3/src'
+make[2]: Leaving directory '/mnt/hdd/kobra/.build/lua5.3'
+rm -f doc/lua5.3.1 doc/luac5.3.1
+rm -f src/lua5.3-deb-multiarch.h
+make[1]: Leaving directory '/mnt/hdd/kobra/.build/lua5.3'
+   dh_clean
+ dpkg-source -b lua5.3
+dpkg-source: info: using source format '3.0 (quilt)'
+dpkg-source: info: building lua5.3 using existing ./lua5.3_5.3.0.orig.tar.gz
+dpkg-source: info: building lua5.3 in lua5.3_5.3.0-1.debian.tar.xz
+dpkg-source: info: building lua5.3 in lua5.3_5.3.0-1.dsc
+ debian/rules build
+dh build
+   dh_testdir
+   debian/rules override_dh_auto_configure
+make[1]: Entering directory '/mnt/hdd/kobra/.build/lua5.3'
+echo "#ifndef _LUA_DEB_MULTIARCH_" > src/lua5.3-deb-multiarch.h
+echo "#define _LUA_DEB_MULTIARCH_" >> src/lua5.3-deb-multiarch.h
+echo "#define DEB_HOST_MULTIARCH \"x86_64-linux-gnu\"" >> \
+	src/lua5.3-deb-multiarch.h
+echo "#endif" >> src/lua5.3-deb-multiarch.h
+make[1]: Leaving directory '/mnt/hdd/kobra/.build/lua5.3'
+   debian/rules override_dh_auto_build
+make[1]: Entering directory '/mnt/hdd/kobra/.build/lua5.3'
+/usr/bin/make linux MYLIBS=
+make[2]: Entering directory '/mnt/hdd/kobra/.build/lua5.3'
+cd src && /usr/bin/make linux V=5.3
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lua5.3/src'
+/usr/bin/make all SYSCFLAGS="-DLUA_USE_LINUX" SYSLIBS="-Wl,-E -ldl -lreadline"
+make[4]: Entering directory '/mnt/hdd/kobra/.build/lua5.3/src'
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lapi.c -o lapi.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lapi.c -o lapi-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lcode.c -o lcode.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lcode.c -o lcode-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lctype.c -o lctype.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lctype.c -o lctype-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c ldebug.c -o ldebug.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c ldebug.c -o ldebug-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c ldo.c -o ldo.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c ldo.c -o ldo-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c ldump.c -o ldump.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c ldump.c -o ldump-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lfunc.c -o lfunc.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lfunc.c -o lfunc-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lgc.c -o lgc.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lgc.c -o lgc-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c llex.c -o llex.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c llex.c -o llex-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lmem.c -o lmem.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lmem.c -o lmem-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lobject.c -o lobject.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lobject.c -o lobject-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lopcodes.c -o lopcodes.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lopcodes.c -o lopcodes-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lparser.c -o lparser.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lparser.c -o lparser-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lstate.c -o lstate.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lstate.c -o lstate-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lstring.c -o lstring.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lstring.c -o lstring-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c ltable.c -o ltable.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c ltable.c -o ltable-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c ltm.c -o ltm.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c ltm.c -o ltm-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lundump.c -o lundump.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lundump.c -o lundump-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lvm.c -o lvm.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lvm.c -o lvm-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lzio.c -o lzio.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lzio.c -o lzio-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lauxlib.c -o lauxlib.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lauxlib.c -o lauxlib-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lbaselib.c -o lbaselib.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lbaselib.c -o lbaselib-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lbitlib.c -o lbitlib.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lbitlib.c -o lbitlib-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lcorolib.c -o lcorolib.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lcorolib.c -o lcorolib-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c ldblib.c -o ldblib.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c ldblib.c -o ldblib-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c liolib.c -o liolib.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c liolib.c -o liolib-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lmathlib.c -o lmathlib.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lmathlib.c -o lmathlib-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c loslib.c -o loslib.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c loslib.c -o loslib-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lstrlib.c -o lstrlib.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lstrlib.c -o lstrlib-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c ltablib.c -o ltablib.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c ltablib.c -o ltablib-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lutf8lib.c -o lutf8lib.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lutf8lib.c -o lutf8lib-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c loadlib.c -o loadlib.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c loadlib.c -o loadlib-c++.o
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c linit.c -o linit.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c linit.c -o linit-c++.o
+libtool --quiet --mode=link --tag=CC  gcc -std=gnu99   -Wl,-z,relro -lm lapi.lo lcode.lo lctype.lo ldebug.lo ldo.lo ldump.lo lfunc.lo lgc.lo llex.lo lmem.lo lobject.lo lopcodes.lo lparser.lo lstate.lo lstring.lo ltable.lo ltm.lo lundump.lo lvm.lo lzio.lo lauxlib.lo lbaselib.lo lbitlib.lo lcorolib.lo ldblib.lo liolib.lo lmathlib.lo loslib.lo lstrlib.lo ltablib.lo lutf8lib.lo loadlib.lo linit.lo     -rpath /usr/lib/x86_64-linux-gnu -version-info 0:0:0 -Wl,--version-script,../debian/version-script -o liblua5.3.la
+ar: `u' modifier ignored since `D' is the default (see `U')
+libtool --quiet --mode=link --tag=CXX g++  -Wl,-z,relro -lm lapi-c++.lo lcode-c++.lo lctype-c++.lo ldebug-c++.lo ldo-c++.lo ldump-c++.lo lfunc-c++.lo lgc-c++.lo llex-c++.lo lmem-c++.lo lobject-c++.lo lopcodes-c++.lo lparser-c++.lo lstate-c++.lo lstring-c++.lo ltable-c++.lo ltm-c++.lo lundump-c++.lo lvm-c++.lo lzio-c++.lo lauxlib-c++.lo lbaselib-c++.lo lbitlib-c++.lo lcorolib-c++.lo ldblib-c++.lo liolib-c++.lo lmathlib-c++.lo loslib-c++.lo lstrlib-c++.lo ltablib-c++.lo lutf8lib-c++.lo loadlib-c++.lo linit-c++.lo -rpath /usr/lib/x86_64-linux-gnu -version-info 0:0:0 -Wl,--version-script,../debian/version-script -o liblua5.3-c++.la
+ar: `u' modifier ignored since `D' is the default (see `U')
+libtool --quiet --mode=link --tag=CC  gcc -std=gnu99   -Wl,-z,relro -lm lapi.lo lcode.lo lctype.lo ldebug.lo ldo.lo ldump.lo lfunc.lo lgc.lo llex.lo lmem.lo lobject.lo lopcodes.lo lparser.lo lstate.lo lstring.lo ltable.lo ltm.lo lundump.lo lvm.lo lzio.lo lauxlib.lo lbaselib.lo lbitlib.lo lcorolib.lo ldblib.lo liolib.lo lmathlib.lo loslib.lo lstrlib.lo ltablib.lo lutf8lib.lo loadlib.lo linit.lo     -rpath /usr/lib/x86_64-linux-gnu -version-info 0:0:0 -Wl,--version-script,../debian/version-script -o liblua5.3.la
+ar: `u' modifier ignored since `D' is the default (see `U')
+libtool --quiet --mode=link --tag=CXX g++  -Wl,-z,relro -lm lapi-c++.lo lcode-c++.lo lctype-c++.lo ldebug-c++.lo ldo-c++.lo ldump-c++.lo lfunc-c++.lo lgc-c++.lo llex-c++.lo lmem-c++.lo lobject-c++.lo lopcodes-c++.lo lparser-c++.lo lstate-c++.lo lstring-c++.lo ltable-c++.lo ltm-c++.lo lundump-c++.lo lvm-c++.lo lzio-c++.lo lauxlib-c++.lo lbaselib-c++.lo lbitlib-c++.lo lcorolib-c++.lo ldblib-c++.lo liolib-c++.lo lmathlib-c++.lo loslib-c++.lo lstrlib-c++.lo ltablib-c++.lo lutf8lib-c++.lo loadlib-c++.lo linit-c++.lo -rpath /usr/lib/x86_64-linux-gnu -version-info 0:0:0 -Wl,--version-script,../debian/version-script -o liblua5.3-c++.la
+ar: `u' modifier ignored since `D' is the default (see `U')
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lua.c -o lua.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c lua.c -o lua-c++.o
+libtool --quiet --mode=link --tag=CC gcc -std=gnu99  -Wl,-z,relro -lm -Wl,-E -ldl -lreadline  -Wl,--version-script,../debian/version-script -static liblua5.3.la -Wl,-E lua.lo -o lua5.3
+libtool --quiet --mode=compile --tag=CC gcc -std=gnu99 -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c luac.c -o luac.o
+libtool --quiet --mode=compile --tag=CXX g++ -Wall -Wextra -DLUA_COMPAT_5_2 -DLUA_USE_LINUX -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -c luac.c -o luac-c++.o
+libtool --quiet --mode=link --tag=CC gcc -std=gnu99  -Wl,-z,relro -Wl,--version-script,../debian/version-script -static liblua5.3.la luac.lo -o luac5.3
+make[4]: Leaving directory '/mnt/hdd/kobra/.build/lua5.3/src'
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lua5.3/src'
+make[2]: Leaving directory '/mnt/hdd/kobra/.build/lua5.3'
+make[1]: Leaving directory '/mnt/hdd/kobra/.build/lua5.3'
+   dh_auto_test
+	make -j1 test
+make[1]: Entering directory '/mnt/hdd/kobra/.build/lua5.3'
+libtool --quiet --mode=execute -dlopen src/liblua5.3.la src/lua5.3 -v
+Lua 5.3.0  Copyright (C) 1994-2015 Lua.org, PUC-Rio
+make[1]: Leaving directory '/mnt/hdd/kobra/.build/lua5.3'
+ fakeroot debian/rules binary
+dh binary
+   dh_testroot
+   dh_prep
+   debian/rules override_dh_auto_install
+make[1]: Entering directory '/mnt/hdd/kobra/.build/lua5.3'
+# pkgconfig
+mkdir -p /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig
+echo "prefix=/usr" > /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig/lua5.3.pc
+echo "major_version=5.3" >> /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig/lua5.3.pc
+echo "version=5.3.0" >> /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig/lua5.3.pc
+echo "lib_name_include=lua5.3" >> /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig/lua5.3.pc
+echo "deb_host_multiarch=x86_64-linux-gnu" >> /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig/lua5.3.pc
+cat debian/lua.pc.in >> /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig/lua5.3.pc
+ln -s lua5.3.pc /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig/lua-5.3.pc
+ln -s lua5.3.pc /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig/lua53.pc
+echo "prefix=/usr" > /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig/lua5.3-c++.pc
+echo "major_version=5.3" >> /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig/lua5.3-c++.pc
+echo "version=5.3.0" >> /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig/lua5.3-c++.pc
+echo "lib_name_include=lua5.3" >> /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig/lua5.3-c++.pc
+echo "deb_host_multiarch=x86_64-linux-gnu" >> /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig/lua5.3-c++.pc
+cat debian/lua-c++.pc.in >> /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig/lua5.3-c++.pc
+ln -s lua5.3-c++.pc /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig/lua-5.3-c++.pc
+ln -s lua5.3-c++.pc /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig/lua53-c++.pc
+# manpage
+cat doc/lua.1  | sed 's/TH LUA 1/TH LUA5.3 1/' > doc/lua5.3.1
+cat doc/luac.1 | sed 's/TH LUAC 1/TH LUAC5.3 1/' > doc/luac5.3.1
+# multiarch
+mkdir -p /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/include/x86_64-linux-gnu/
+cp src/lua5.3-deb-multiarch.h /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/include/x86_64-linux-gnu/
+/usr/bin/make install
+make[2]: Entering directory '/mnt/hdd/kobra/.build/lua5.3'
+cd src && mkdir -p /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/bin /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/include/lua5.3/ /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/ /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/share/man/man1 /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/share/lua/5.3 /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/lua/5.3
+cd src && install -p -m 0755 lua5.3 luac5.3 /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/bin
+cd src && install -p -m 0644 lua.h luaconf.h lualib.h lauxlib.h lua.hpp /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/include/lua5.3/
+cd src && libtool --quiet --mode=install install -m 0644 liblua5.3.la liblua5.3-c++.la /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/lib/x86_64-linux-gnu/
+libtool: install: warning: remember to run `libtool --finish /usr/lib/x86_64-linux-gnu'
+cd doc && install -p -m 0644 lua5.3.1 luac5.3.1 /mnt/hdd/kobra/.build/lua5.3/debian/tmp/usr/share/man/man1
+make[2]: Leaving directory '/mnt/hdd/kobra/.build/lua5.3'
+make[1]: Leaving directory '/mnt/hdd/kobra/.build/lua5.3'
+   dh_install
+   dh_installdocs
+   dh_installchangelogs
+   dh_installman
+   dh_perl
+   dh_link
+   dh_compress
+   dh_fixperms
+   debian/rules override_dh_strip
+make[1]: Entering directory '/mnt/hdd/kobra/.build/lua5.3'
+dh_strip --dbg-package=liblua5.3-0-dbg
+make[1]: Leaving directory '/mnt/hdd/kobra/.build/lua5.3'
+   dh_makeshlibs
+   dh_shlibdeps
+dpkg-shlibdeps: warning: symbol dlerror used by debian/liblua5.3-0/usr/lib/x86_64-linux-gnu/liblua5.3-c++.so.0.0.0 found in none of the libraries
+dpkg-shlibdeps: warning: symbol dlclose used by debian/liblua5.3-0/usr/lib/x86_64-linux-gnu/liblua5.3-c++.so.0.0.0 found in none of the libraries
+dpkg-shlibdeps: warning: symbol dlopen used by debian/liblua5.3-0/usr/lib/x86_64-linux-gnu/liblua5.3-c++.so.0.0.0 found in none of the libraries
+dpkg-shlibdeps: warning: symbol dlsym used by debian/liblua5.3-0/usr/lib/x86_64-linux-gnu/liblua5.3-c++.so.0.0.0 found in none of the libraries
+dpkg-shlibdeps: warning: symbol dlopen used by debian/liblua5.3-0/usr/lib/x86_64-linux-gnu/liblua5.3.so.0.0.0 found in none of the libraries
+dpkg-shlibdeps: warning: symbol dlsym used by debian/liblua5.3-0/usr/lib/x86_64-linux-gnu/liblua5.3.so.0.0.0 found in none of the libraries
+dpkg-shlibdeps: warning: symbol dlerror used by debian/liblua5.3-0/usr/lib/x86_64-linux-gnu/liblua5.3.so.0.0.0 found in none of the libraries
+dpkg-shlibdeps: warning: symbol dlclose used by debian/liblua5.3-0/usr/lib/x86_64-linux-gnu/liblua5.3.so.0.0.0 found in none of the libraries
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/liblua5.3-0/usr/lib/x86_64-linux-gnu/liblua5.3-c++.so.0.0.0 was not linked against libgcc_s.so.1 (it uses none of the library's symbols)
+   dh_installdeb
+   dh_gencontrol
+dpkg-gencontrol: warning: File::FcntlLock not available; using flock which is not NFS-safe
+dpkg-gencontrol: warning: File::FcntlLock not available; using flock which is not NFS-safe
+dpkg-gencontrol: warning: File::FcntlLock not available; using flock which is not NFS-safe
+dpkg-gencontrol: warning: Depends field of package liblua5.3-0-dbg: unknown substitution variable ${shlibs:Depends}
+dpkg-gencontrol: warning: File::FcntlLock not available; using flock which is not NFS-safe
+   dh_md5sums
+   dh_builddeb
+dpkg-deb: building package 'lua5.3' in '../lua5.3_5.3.0-1_amd64.deb'.
+dpkg-deb: building package 'liblua5.3-dev' in '../liblua5.3-dev_5.3.0-1_amd64.deb'.
+dpkg-deb: building package 'liblua5.3-0' in '../liblua5.3-0_5.3.0-1_amd64.deb'.
+dpkg-deb: building package 'liblua5.3-0-dbg' in '../liblua5.3-0-dbg_5.3.0-1_amd64.deb'.
+ dpkg-genchanges  >../lua5.3_5.3.0-1_amd64.changes
+dpkg-genchanges: including full source code in upload
+ dpkg-source --after-build lua5.3
+dpkg-source: info: unapplying 0002-lua-modules-paths.patch
+dpkg-source: info: unapplying 0001-build-system.patch
+dpkg-buildpackage: full upload (original source is included)
+Now running lintian...
+Finished running lintian.
+Now signing changes and any dsc files...
+ signfile lua5.3_5.3.0-1.dsc Enrico Tassi <gareuselesinge@debian.org>
+gpg: skipped "Enrico Tassi <gareuselesinge@debian.org>": secret key not available
+gpg: /tmp/debsign.AWfZBjAS/lua5.3_5.3.0-1.dsc: clearsign failed: secret key not available
+debsign: gpg error occurred!  Aborting....

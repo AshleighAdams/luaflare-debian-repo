@@ -1,0 +1,76 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Format: 1.8
+Date: Sat, 07 Feb 2015 03:45:12 +0000
+Source: luaflare
+Binary: luaflare luaflare-service luaflare-reverseproxy-nginx luaflare-reverseproxy-apache
+Architecture: source all
+Version: 2.8
+Distribution: unstable
+Urgency: low
+Maintainer: Kate Adams <self@kateadams.eu>
+Changed-By: Kate Adams <self@kateadams.eu>
+Description:
+ luaflare   - Lua web server
+ luaflare-reverseproxy-apache - Apache site for LuaFlare
+ luaflare-reverseproxy-nginx - Nginx site for LuaFlare
+ luaflare-service - Lua web server service
+Changes:
+ luaflare (2.8) unstable; urgency=low
+ .
+   * Added /stats/module/*.
+   * Added hook performance counter.
+   * Added luaflare.socket module (replaces all socket use inside LuaFlare).
+   * Type checking speed improvments.
+   * Added luaflare.templator module.
+   * Added luaflare.profiler module.
+   * Improved the speed of escape.html() by aprox. 2 orders of magnitude.
+   * Improved the speed of the Lua lexer.
+   * Added scheduler.sleep().
+   * More closely follows RFC2616 and RFC7231.
+   * Removed SSL support.
+   * Fixed 5.3 binary operators precedence.
+   * Renamed request:url() to request:path().
+   * Modularized the main loop system.
+   * Renamed Loaded hook to Load.
+   * Added Unload hook.
+Checksums-Sha1:
+ dc557bb77909895891e016e9a79e8d7c56e044b7 1816 luaflare_2.8.dsc
+ 7a93b7f1259c5712369d82c41eef1f28b6bcca66 1784708 luaflare_2.8.tar.xz
+ 2396a2b0f6450f3f30f806b0d01ffe221852abb8 312334 luaflare_2.8_all.deb
+ 809d272057377f1088dbc96e521a594d69a607f1 5054 luaflare-service_2.8_all.deb
+ b38b847795269ae9d1d47d7444df6eade29422c7 4322 luaflare-reverseproxy-nginx_2.8_all.deb
+ 11e2ae93844e3cf2eee6d590237d4c2714185805 3416 luaflare-reverseproxy-apache_2.8_all.deb
+Checksums-Sha256:
+ 125d2c33807b961895502b0078b2ecddce3a6935c2af6ff0c848e8caaf7eaf52 1816 luaflare_2.8.dsc
+ 95cbf0d206d7acb73d10a32b72ce739c58d9965f32728affbaedf417de260171 1784708 luaflare_2.8.tar.xz
+ 4fb7d9ffe47e01d6c0a104fac2faec1a49d9bed573413bb3943a761faa94c5f3 312334 luaflare_2.8_all.deb
+ e17128c13558284eae0867de613d898acd4e15dec9a069b5c47330b7b76f875c 5054 luaflare-service_2.8_all.deb
+ 4d62466fc499c4c5b17acf9f192366e9e98877c89bd444a44e546ac6943f454d 4322 luaflare-reverseproxy-nginx_2.8_all.deb
+ 0aed09b3f0f3daa28a2ded45adc99c307fb2606859372651fd431e9ba75b3b95 3416 luaflare-reverseproxy-apache_2.8_all.deb
+Files:
+ 95cfac76f3e636a3d451f0d3c20d2cc7 1816 httpd optional luaflare_2.8.dsc
+ 263fa52437ccb68e64f60365a4d84863 1784708 httpd optional luaflare_2.8.tar.xz
+ 2defea13b9881f354d1ec9106492525f 312334 httpd optional luaflare_2.8_all.deb
+ f4f676e3d06320f9bb67fdd989605d7f 5054 httpd optional luaflare-service_2.8_all.deb
+ d244bf86d860cf0ee9c6e4c36d5fcd1b 4322 httpd optional luaflare-reverseproxy-nginx_2.8_all.deb
+ 24ab7b5adb1c0e39ebe682ce0bdeca77 3416 httpd optional luaflare-reverseproxy-apache_2.8_all.deb
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQIcBAEBAgAGBQJU1YtwAAoJEL+N9HgLe9CtqT0P/j24WCOHpGYNGAWi4tdbvsEL
+M0aBBQxdsasugMFz8bdHyZ4MyChYsvuX2yG1cwCd9MHZixHRLVzP/6Hr0y/AE6bs
+svvaqozm9au0a/k0ww9t40UD8gnqvLmhlbV7vKXrSKzBd8rdMW8eTzyM4dYQhIyY
+ZDQf2nw835jvtVtRkK5R3kB1J4EY0ZvmlaetkXunJomit33DwZIUDhRqfMvUbLcz
+f/ILjR6wDngBEQQ4TRX+XB+8y6+8y9NHojoO0w5FwdnzIffYfT+iPrhAVUNi0Wss
+q/qSD6mj+gdRw7aEG7rL5Mc4KJFXHlq3Gz7muG5nB/tFFMHC9qV8frxS8u8fy8ME
+fjnqbLFQe7mH5vbI7Xiv6oNDN6RveNiRBHT0IGty2f1Uc8Y+/9FiHyqdLde+vbG0
+i3e1nt3KujnKTGSMXBy8HYtvjBXYq+32qmx4SoQOYtqgwQ139c/ipqUErRg5yrnh
+UWLhv/BIEiEFX3dpsGdMn/kcAz7FaHwnJq0kiLE0RzTxdQKgcDlYHKen7akHgzV+
+JMbM+YIZWiQ4OBHZ8LL3zwJJSJYyhHX1pAihzly6nB21JHlNO+kmYsq4yyq7S7Oq
+ibA9CrX27PAvjOc64IztHjNjDiR23locdatpaCRXnjTjKFLmhfItUo6DvQTs+5Ts
+WGx8tdQpji3tpxV4VaKJ
+=bzlZ
+-----END PGP SIGNATURE-----

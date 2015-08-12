@@ -1,0 +1,33 @@
+Format: 1.8
+Date: Wed, 12 Aug 2015 17:46:16 +0100
+Source: liblthread
+Binary: liblthread liblthread-dev
+Architecture: source all amd64
+Version: 1.0.0.1
+Distribution: unstable
+Urgency: medium
+Maintainer: Kate Adams <self@kateadams.eu>
+Changed-By: Kate Adams <self@kateadams.eu>
+Description:
+ liblthread - C coroutine library
+ liblthread-dev - C coroutine library development files.
+Changes:
+ liblthread (1.0.0.1) unstable; urgency=medium
+ .
+   * Initial debian package.
+   * Builds as a shared library rather than static.
+Checksums-Sha1:
+ 2c76d519d9728799271a6a5bcad857a2575558d1 743 liblthread_1.0.0.1.dsc
+ 9372f60edcb192958b529c6d4ee645c3ee9d5af3 85256 liblthread_1.0.0.1.tar.xz
+ 8ddc0701a2de2ba4b230e98227c8c4615a26dd7b 2674 liblthread-dev_1.0.0.1_all.deb
+ 18b8464dfd056381698fda0d15ffc906eadd6f52 16464 liblthread_1.0.0.1_amd64.deb
+Checksums-Sha256:
+ 8b50b1cba064a12f647edd0e78be41f927975612924c5ef05aab3d2b8c5a9e31 743 liblthread_1.0.0.1.dsc
+ e9037d9a09daadb16a4ea6c1153ff99ccc19a812d175fe48328cfffedb9fd9c4 85256 liblthread_1.0.0.1.tar.xz
+ 722288a68fbf5f714615cd54cd4a5f28df0d10cce086f5cb937702b9de0d94e1 2674 liblthread-dev_1.0.0.1_all.deb
+ 480463feeeebca4d2724f0c4ca2f9437e5688246e5328956fcca9a57c6bf4d7e 16464 liblthread_1.0.0.1_amd64.deb
+Files:
+ ef5f037ed714ac1cb54132b9ba430e71 743 libs optional liblthread_1.0.0.1.dsc
+ 5ba3ef90186ad6e50522abd788103280 85256 libs optional liblthread_1.0.0.1.tar.xz
+ c2cf3951d353e9a23f2622060c364201 2674 libdevel optional liblthread-dev_1.0.0.1_all.deb
+ f27a1075481249942ad4b82219b3eb2e 16464 libs optional liblthread_1.0.0.1_amd64.deb

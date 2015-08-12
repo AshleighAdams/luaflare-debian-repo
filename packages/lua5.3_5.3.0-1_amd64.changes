@@ -1,0 +1,44 @@
+Format: 1.8
+Date: Sun, 01 Mar 2015 15:39:41 +0100
+Source: lua5.3
+Binary: lua5.3 liblua5.3-dev liblua5.3-0 liblua5.3-0-dbg
+Architecture: source amd64
+Version: 5.3.0-1
+Distribution: unstable
+Urgency: medium
+Maintainer: Enrico Tassi <gareuselesinge@debian.org>
+Changed-By: Enrico Tassi <gareuselesinge@debian.org>
+Description:
+ liblua5.3-0 - Shared library for the Lua interpreter version 5.3
+ liblua5.3-0-dbg - Debug symbols for the Lua shared library interpreter
+ liblua5.3-dev - Development files for the Lua language version 5.3
+ lua5.3     - Simple, extensible, embeddable programming language
+Closes: 775565
+Changes:
+ lua5.3 (5.3.0-1) unstable; urgency=medium
+ .
+   * Initial release. (Closes: #775565)
+Checksums-Sha1:
+ b6e1304ca6016b753ebd19ae9995ff5eafbb1975 1134 lua5.3_5.3.0-1.dsc
+ 1c46d1c78c44039939e820126b86a6ae12dadfba 278045 lua5.3_5.3.0.orig.tar.gz
+ 23c9628f279b97e0622939d3dd831657baaaa3ff 5920 lua5.3_5.3.0-1.debian.tar.xz
+ 6b0a39d1330ad0fb95ae5f29fb85009a7502d74b 1028930 liblua5.3-0-dbg_5.3.0-1_amd64.deb
+ a418907e19455a19092cfe95ae529761969d0dd9 114826 liblua5.3-0_5.3.0-1_amd64.deb
+ 0354d2ad862b61ba790d81919f2cb01436a75829 141330 liblua5.3-dev_5.3.0-1_amd64.deb
+ 3d0d72f33d6dd66710d547f2ee2b708c499e29e2 102284 lua5.3_5.3.0-1_amd64.deb
+Checksums-Sha256:
+ e91875e08d51db66e59739aaba9247726a5378e7128d0c0f465c5365e11b38ad 1134 lua5.3_5.3.0-1.dsc
+ ae4a5eb2d660515eb191bfe3e061f2b8ffe94dce73d32cfd0de090ddcc0ddb01 278045 lua5.3_5.3.0.orig.tar.gz
+ 125bf3d8b4d22aa32b5c87d445705aba9ca8d1ea80db581738c41bbebed4a4e2 5920 lua5.3_5.3.0-1.debian.tar.xz
+ 41192a066b45edc039aec3e1fbc98ac76f3160e1ec4325a961a3e750cd8a8a86 1028930 liblua5.3-0-dbg_5.3.0-1_amd64.deb
+ c477258ad07eb9205460e215c5c2bc44eab24e9a6dbfe460853f3db937eeabe6 114826 liblua5.3-0_5.3.0-1_amd64.deb
+ 98b6bcbe94a35a796f20337fe79e537c4ec161d4279612c918e3c9263f429a7a 141330 liblua5.3-dev_5.3.0-1_amd64.deb
+ 6023cd1fc6ff3396a7174cbea6db81374058e74331e86bc1e75520378c89523b 102284 lua5.3_5.3.0-1_amd64.deb
+Files:
+ c774b15b3bb3608abeb833c163cb6c13 1134 interpreters optional lua5.3_5.3.0-1.dsc
+ a1b0a7e92d0c85bbff7a8d27bf29f8af 278045 interpreters optional lua5.3_5.3.0.orig.tar.gz
+ 05c613b4f589385a21edadbdd5c78daf 5920 interpreters optional lua5.3_5.3.0-1.debian.tar.xz
+ 13eea0f5f46dcc1a96b4c7b2cd83c1cd 1028930 debug extra liblua5.3-0-dbg_5.3.0-1_amd64.deb
+ a41609cbd116cc99b58b8d48d3e75bbc 114826 libs optional liblua5.3-0_5.3.0-1_amd64.deb
+ 67d3c7f224c0f222c44742654b2ba33e 141330 libdevel optional liblua5.3-dev_5.3.0-1_amd64.deb
+ b91ce628730e8ab49f8b9dc8c07f5af8 102284 interpreters optional lua5.3_5.3.0-1_amd64.deb

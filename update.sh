@@ -25,7 +25,9 @@ done
 # then update the indexes
 apt-ftparchive packages debian > debian/Packages
 apt-ftparchive sources debian > debian/Sources
-apt-ftparchive release debian > debian/Release
+
+echo "Origin: Debian" > debian/Release
+apt-ftparchive release debian >> debian/Release
 
 cat debian/Packages | gzip > debian/Packages.gz
 cat debian/Packages | bzip2 > debian/Packages.bz2

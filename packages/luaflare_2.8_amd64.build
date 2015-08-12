@@ -1,0 +1,546 @@
+ dpkg-buildpackage -rfakeroot -D -us -uc
+dpkg-buildpackage: source package luaflare
+dpkg-buildpackage: source version 2.8
+dpkg-buildpackage: source distribution unstable
+dpkg-buildpackage: source changed by Kate Adams <self@kateadams.eu>
+ dpkg-source --before-build LuaFlare-debian
+dpkg-buildpackage: host architecture amd64
+ fakeroot debian/rules clean
+dh clean --with systemd
+   dh_testdir
+   dh_auto_clean
+   dh_clean
+	rm -f debian/luaflare.substvars
+	rm -f debian/luaflare.*.debhelper
+	rm -rf debian/luaflare/
+	rm -f debian/luaflare-service.substvars
+	rm -f debian/luaflare-service.*.debhelper
+	rm -rf debian/luaflare-service/
+	rm -f debian/luaflare-reverseproxy-nginx.substvars
+	rm -f debian/luaflare-reverseproxy-nginx.*.debhelper
+	rm -rf debian/luaflare-reverseproxy-nginx/
+	rm -f debian/luaflare-reverseproxy-apache.substvars
+	rm -f debian/luaflare-reverseproxy-apache.*.debhelper
+	rm -rf debian/luaflare-reverseproxy-apache/
+	rm -f debian/*.debhelper.log
+	rm -f debian/files
+	find .  \( \( \
+		\( -path .\*/.git -o -path .\*/.svn -o -path .\*/.bzr -o -path .\*/.hg -o -path .\*/CVS \) -prune -o -type f -a \
+	        \( -name '#*#' -o -name '.*~' -o -name '*~' -o -name DEADJOE \
+		 -o -name '*.orig' -o -name '*.rej' -o -name '*.bak' \
+		 -o -name '.*.orig' -o -name .*.rej -o -name '.SUMS' \
+		 -o -name TAGS -o \( -path '*/.deps/*' -a -name '*.P' \) \
+		\) -exec rm -f {} + \) -o \
+		\( -type d -a -name autom4te.cache -prune -exec rm -rf {} + \) \)
+	rm -rf debian/tmp
+	rm -f *-stamp
+ dpkg-source -b LuaFlare-debian
+dpkg-source: info: using source format `3.0 (native)'
+dpkg-source: info: building luaflare in luaflare_2.8.tar.xz
+dpkg-source: info: building luaflare in luaflare_2.8.dsc
+ debian/rules build
+dh build --with systemd
+   dh_testdir
+   dh_auto_configure
+	./configure --build=x86_64-linux-gnu --prefix=/usr --includedir=\${prefix}/include --mandir=\${prefix}/share/man --infodir=\${prefix}/share/info --sysconfdir=/etc --localstatedir=/var --disable-silent-rules --libdir=\${prefix}/lib/x86_64-linux-gnu --libexecdir=\${prefix}/lib/x86_64-linux-gnu --disable-maintainer-mode --disable-dependency-tracking
+prefix: /usr
+sysconf: /etc
+user: www-data
+nginx dir: /etc/nginx
+nginx http/https ports: 80 & 443
+apache dir: /etc/apache2
+system service: none
+bash completion dir: /usr/share/bash-completion/completions/
+luaflare post-install options: --port=8080 --reverse-proxy --local --trusted-reverse-proxies=localhost,::1 --x-accel-redirect=/./ --x-sendfile
+locating cp... okay: /bin/cp
+locating mkdir... okay: /bin/mkdir
+locating cat... okay: /bin/cat
+locating sed... okay: /bin/sed
+locating ln... okay: /bin/ln
+locating git... okay: /usr/bin/git
+locating chmod... okay: /bin/chmod
+locating chown... okay: /bin/chown
+locating service... okay: /usr/sbin/service
+locating update-rc.d... okay: /usr/sbin/update-rc.d
+locating install... okay: /usr/bin/install
+locating touch... okay: /usr/bin/touch
+processing files...
+processing config.pre... done.
+config.pre: warning: unusued variable %systemctl
+processing luaflare.apache.pre... done.
+processing luaflare.bash-completion.pre... done.
+processing luaflare.default.pre... done.
+processing luaflare.nginx.pre... done.
+processing luaflare.pre... done.
+processing luaflare.systemd.pre... done.
+processing luaflare.sysvinit.pre... done.
+processing luaflare.upstart.pre... done.
+configuring complete
+variables:
+	APACHE_DIR = /etc/apache2
+	APACHE_HTTPS_PORT = 443
+	APACHE_HTTP_PORT = 80
+	BASH_COMPLETION_DIR = /usr/share/bash-completion/completions/
+	CONFIGURE_VERSION = 2.8-7-g9493fbc
+	INSTALL_EXTRA = install-nginx-site install-apache-site install-none-service install-bash-completion install-luaflare-opts
+	LUA = lua
+	LUAFLARE_BIN_DIR = /usr/bin
+	LUAFLARE_CFG_DIR = /etc/luaflare
+	LUAFLARE_LIB_DIR = /usr/lib/luaflare
+	LUAFLARE_PORT = 8080
+	LUAFLARE_POSTINT_OPTS = --port=8080 --reverse-proxy --local --trusted-reverse-proxies=localhost,::1 --x-accel-redirect=/./ --x-sendfile
+	LUA_DEPENDS = bit lfs md5 posix socket
+	NGINX_DIR = /etc/nginx
+	NGINX_HTTPS_PORT = 443
+	NGINX_HTTP_PORT = 80
+	PREFIX = /usr
+	SERVICE = none
+	SYSCONF = /etc
+	SYSTEMD_UNIT_DIR = 
+	SYSVINIT_DAEMON_DIR = 
+	UPSTART_DAEMON_DIR = 
+	USER = www-data
+	VERSION = 2.8.7
+	cat = /bin/cat
+	chmod = /bin/chmod
+	chown = /bin/chown
+	cp = /bin/cp
+	git = /usr/bin/git
+	install = /usr/bin/install
+	ln = /bin/ln
+	mkdir = /bin/mkdir
+	precmd = echo
+	sed = /bin/sed
+	service = /usr/sbin/service
+	touch = /usr/bin/touch
+	updatercd = /usr/sbin/update-rc.d
+   dh_auto_test
+ fakeroot debian/rules binary
+dh binary --with systemd
+   dh_testroot
+   dh_prep
+	rm -f debian/luaflare.substvars
+	rm -f debian/luaflare.*.debhelper
+	rm -rf debian/luaflare/
+	rm -f debian/luaflare-service.substvars
+	rm -f debian/luaflare-service.*.debhelper
+	rm -rf debian/luaflare-service/
+	rm -f debian/luaflare-reverseproxy-nginx.substvars
+	rm -f debian/luaflare-reverseproxy-nginx.*.debhelper
+	rm -rf debian/luaflare-reverseproxy-nginx/
+	rm -f debian/luaflare-reverseproxy-apache.substvars
+	rm -f debian/luaflare-reverseproxy-apache.*.debhelper
+	rm -rf debian/luaflare-reverseproxy-apache/
+   dh_auto_install
+	install -d debian/luaflare
+	install -d debian/luaflare-service
+	install -d debian/luaflare-reverseproxy-nginx
+	install -d debian/luaflare-reverseproxy-apache
+	make -j1 install DESTDIR=/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp AM_UPDATE_INFO_DIR=no
+make[1]: Entering directory '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+make -C thirdparty install
+make[2]: Entering directory '/home/kobra/Dropbox/Projects/LuaFlare-debian/thirdparty'
+checking config version... okay. (2.8.7)
+Lua found
+checking bit... okay
+checking lfs... okay
+checking md5... okay
+checking posix... okay
+checking socket... okay
+/bin/mkdir -p /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/usr/lib/luaflare
+/bin/mkdir -p /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/etc/luaflare
+# make sure they don't exist, then recursive copy them!
+/bin/cp --remove-destination -r ../bootstrap  /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/usr/lib/luaflare/
+/bin/cp --remove-destination -r ../inc        /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/usr/lib/luaflare/
+/bin/cp --remove-destination -r ../libs       /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/usr/lib/luaflare/
+/bin/cp --remove-destination -r ../lua        /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/etc/luaflare/
+/bin/cp --remove-destination -r ../static     /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/etc/luaflare/
+/bin/cp --remove-destination -r ../keys       /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/etc/luaflare/
+/usr/bin/install -D --mode=644 luaflare.default.post "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/etc/default/luaflare"
+/usr/bin/touch /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/etc/luaflare/luaflare.cfg
+# allthough libs/luaflare.lua has already been copied, copy it again, but replace the version number
+/bin/cat ../libs/luaflare.lua \
+	| /bin/sed "s|LuaFlare git|LuaFlare 2.8.7|g" \
+	> /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/usr/lib/luaflare/libs/luaflare.lua
+/bin/mkdir -p /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/etc/luaflare/sites
+# /bin/cp --remove-destination -r ../luaflare.cfg /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/etc/luaflare/luaflare.cfg
+echo /bin/chown -R www-data:www-data /usr/lib/luaflare/
+/bin/chown -R www-data:www-data /usr/lib/luaflare/
+echo /bin/chown -R www-data:www-data /etc/luaflare/
+/bin/chown -R www-data:www-data /etc/luaflare/
+/bin/mkdir -p /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/usr/bin && \
+/bin/cat ../luaflare.lua \
+	| /bin/sed "s|#!/usr/bin/lua lua|#!/usr/bin/lua|" \
+	> "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/usr/lib/luaflare/luaflare.lua" && \
+/bin/chmod +x "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/usr/lib/luaflare/luaflare.lua"
+/usr/bin/install -D --mode=644 luaflare.post "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/usr/bin/luaflare"
+/bin/chmod +x "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/usr/bin/luaflare"
+/bin/mkdir -p "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/etc/nginx/sites-available/" && \
+/bin/mkdir -p "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/etc/nginx/sites-enabled/" && \
+/usr/bin/install -D --mode=644 luaflare.nginx.post "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/etc/nginx/sites-available/luaflare"
+# Don't enable these by default, they error unless the default site has been removed!
+#echo /bin/ln -sf /etc/nginx/sites-available/luaflare /etc/nginx/sites-enabled/luaflare
+#echo /usr/sbin/service nginx restart # systemd / upstart should impliment this
+/bin/mkdir -p "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/etc/apache2/sites-available/" && \
+/bin/mkdir -p "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/etc/apache2/sites-enabled/" && \
+/usr/bin/install -D --mode=644 luaflare.apache.post "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/etc/apache2/sites-available/luaflare.conf"
+# do nothing
+/usr/bin/install -D --mode=644 luaflare.bash-completion.post "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/usr/share/bash-completion/completions//luaflare"
+/bin/chmod +x "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/tmp/usr/share/bash-completion/completions//luaflare"
+echo /usr/bin/luaflare --port=8080 --reverse-proxy --local --trusted-reverse-proxies=localhost,::1 --x-accel-redirect=/./ --x-sendfile
+/usr/bin/luaflare --port=8080 --reverse-proxy --local --trusted-reverse-proxies=localhost,::1 --x-accel-redirect=/./ --x-sendfile
+make[2]: Leaving directory '/home/kobra/Dropbox/Projects/LuaFlare-debian/thirdparty'
+make[1]: Leaving directory '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+   debian/rules override_dh_install
+make[1]: Entering directory '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+dh_bash-completion
+	install -d debian/luaflare/etc/bash_completion.d
+	installing thirdparty/luaflare.bash-completion.post as luaflare
+	install -p -m644 ./thirdparty/luaflare.bash-completion.post debian/luaflare/etc/bash_completion.d/luaflare
+dh_install
+make \
+	DESTDIR="`pwd`/debian/luaflare" \
+	install-bin install-shared install-luaflare-opts
+make[2]: Entering directory '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+make -C thirdparty install-bin
+make[3]: Entering directory '/home/kobra/Dropbox/Projects/LuaFlare-debian/thirdparty'
+/bin/mkdir -p /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/usr/lib/luaflare
+/bin/mkdir -p /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/etc/luaflare
+# make sure they don't exist, then recursive copy them!
+/bin/cp --remove-destination -r ../bootstrap  /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/usr/lib/luaflare/
+/bin/cp --remove-destination -r ../inc        /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/usr/lib/luaflare/
+/bin/cp --remove-destination -r ../libs       /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/usr/lib/luaflare/
+/bin/cp --remove-destination -r ../lua        /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/etc/luaflare/
+/bin/cp --remove-destination -r ../static     /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/etc/luaflare/
+/bin/cp --remove-destination -r ../keys       /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/etc/luaflare/
+/usr/bin/install -D --mode=644 luaflare.default.post "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/etc/default/luaflare"
+/usr/bin/touch /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/etc/luaflare/luaflare.cfg
+# allthough libs/luaflare.lua has already been copied, copy it again, but replace the version number
+/bin/cat ../libs/luaflare.lua \
+	| /bin/sed "s|LuaFlare git|LuaFlare 2.8.7|g" \
+	> /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/usr/lib/luaflare/libs/luaflare.lua
+/bin/mkdir -p /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/etc/luaflare/sites
+# /bin/cp --remove-destination -r ../luaflare.cfg /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/etc/luaflare/luaflare.cfg
+echo /bin/chown -R www-data:www-data /usr/lib/luaflare/
+/bin/chown -R www-data:www-data /usr/lib/luaflare/
+echo /bin/chown -R www-data:www-data /etc/luaflare/
+/bin/chown -R www-data:www-data /etc/luaflare/
+/bin/mkdir -p /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/usr/bin && \
+/bin/cat ../luaflare.lua \
+	| /bin/sed "s|#!/usr/bin/lua lua|#!/usr/bin/lua|" \
+	> "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/usr/lib/luaflare/luaflare.lua" && \
+/bin/chmod +x "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/usr/lib/luaflare/luaflare.lua"
+/usr/bin/install -D --mode=644 luaflare.post "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/usr/bin/luaflare"
+/bin/chmod +x "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/usr/bin/luaflare"
+make[3]: Leaving directory '/home/kobra/Dropbox/Projects/LuaFlare-debian/thirdparty'
+make -C thirdparty install-shared
+make[3]: Entering directory '/home/kobra/Dropbox/Projects/LuaFlare-debian/thirdparty'
+/bin/mkdir -p /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/usr/lib/luaflare
+/bin/mkdir -p /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/etc/luaflare
+# make sure they don't exist, then recursive copy them!
+/bin/cp --remove-destination -r ../bootstrap  /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/usr/lib/luaflare/
+/bin/cp --remove-destination -r ../inc        /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/usr/lib/luaflare/
+/bin/cp --remove-destination -r ../libs       /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/usr/lib/luaflare/
+/bin/cp --remove-destination -r ../lua        /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/etc/luaflare/
+/bin/cp --remove-destination -r ../static     /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/etc/luaflare/
+/bin/cp --remove-destination -r ../keys       /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/etc/luaflare/
+/usr/bin/install -D --mode=644 luaflare.default.post "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/etc/default/luaflare"
+/usr/bin/touch /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/etc/luaflare/luaflare.cfg
+# allthough libs/luaflare.lua has already been copied, copy it again, but replace the version number
+/bin/cat ../libs/luaflare.lua \
+	| /bin/sed "s|LuaFlare git|LuaFlare 2.8.7|g" \
+	> /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/usr/lib/luaflare/libs/luaflare.lua
+/bin/mkdir -p /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/etc/luaflare/sites
+# /bin/cp --remove-destination -r ../luaflare.cfg /home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare/etc/luaflare/luaflare.cfg
+echo /bin/chown -R www-data:www-data /usr/lib/luaflare/
+/bin/chown -R www-data:www-data /usr/lib/luaflare/
+echo /bin/chown -R www-data:www-data /etc/luaflare/
+/bin/chown -R www-data:www-data /etc/luaflare/
+make[3]: Leaving directory '/home/kobra/Dropbox/Projects/LuaFlare-debian/thirdparty'
+make -C thirdparty install-luaflare-opts
+make[3]: Entering directory '/home/kobra/Dropbox/Projects/LuaFlare-debian/thirdparty'
+echo /usr/bin/luaflare --port=8080 --reverse-proxy --local --trusted-reverse-proxies=localhost,::1 --x-accel-redirect=/./ --x-sendfile
+/usr/bin/luaflare --port=8080 --reverse-proxy --local --trusted-reverse-proxies=localhost,::1 --x-accel-redirect=/./ --x-sendfile
+make[3]: Leaving directory '/home/kobra/Dropbox/Projects/LuaFlare-debian/thirdparty'
+make[2]: Leaving directory '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+cat debian/luaflare.postinst.self >> debian/luaflare.postinst.debhelper
+make \
+	DESTDIR="`pwd`/debian/luaflare-reverseproxy-nginx" \
+	install-nginx-site
+make[2]: Entering directory '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+make -C thirdparty install-nginx-site
+make[3]: Entering directory '/home/kobra/Dropbox/Projects/LuaFlare-debian/thirdparty'
+/bin/mkdir -p "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare-reverseproxy-nginx/etc/nginx/sites-available/" && \
+/bin/mkdir -p "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare-reverseproxy-nginx/etc/nginx/sites-enabled/" && \
+/usr/bin/install -D --mode=644 luaflare.nginx.post "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare-reverseproxy-nginx/etc/nginx/sites-available/luaflare"
+# Don't enable these by default, they error unless the default site has been removed!
+#echo /bin/ln -sf /etc/nginx/sites-available/luaflare /etc/nginx/sites-enabled/luaflare
+#echo /usr/sbin/service nginx restart # systemd / upstart should impliment this
+make[3]: Leaving directory '/home/kobra/Dropbox/Projects/LuaFlare-debian/thirdparty'
+make[2]: Leaving directory '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+cat debian/luaflare-reverseproxy-nginx.postinst.self >> debian/luaflare-reverseproxy-nginx.postinst.debhelper
+make \
+	DESTDIR="`pwd`/debian/luaflare-reverseproxy-apache" \
+	install-apache-site
+make[2]: Entering directory '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+make -C thirdparty install-apache-site
+make[3]: Entering directory '/home/kobra/Dropbox/Projects/LuaFlare-debian/thirdparty'
+/bin/mkdir -p "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare-reverseproxy-apache/etc/apache2/sites-available/" && \
+/bin/mkdir -p "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare-reverseproxy-apache/etc/apache2/sites-enabled/" && \
+/usr/bin/install -D --mode=644 luaflare.apache.post "/home/kobra/Dropbox/Projects/LuaFlare-debian/debian/luaflare-reverseproxy-apache/etc/apache2/sites-available/luaflare.conf"
+make[3]: Leaving directory '/home/kobra/Dropbox/Projects/LuaFlare-debian/thirdparty'
+make[2]: Leaving directory '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+cat debian/luaflare-reverseproxy-apache.postinst.self >> debian/luaflare-reverseproxy-apache.postinst.debhelper
+make[1]: Leaving directory '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+   debian/rules override_dh_installdocs
+make[1]: Entering directory '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+dh_installman
+	install -d debian/luaflare/usr/share/man/man1/
+	install -p -m644 thirdparty/docs/luaflare.1 debian/luaflare/usr/share/man/man1/luaflare.1
+	man --recode UTF-8 ./luaflare\.1 > luaflare\.1\.new
+	chmod 644 luaflare.1.new
+	mv -f luaflare.1.new luaflare.1
+dh_installdocs
+	install -g 0 -o 0 -d debian/luaflare/usr/share/doc/luaflare
+	install -g 0 -o 0 -m 644 -p debian/copyright debian/luaflare/usr/share/doc/luaflare/copyright
+	install -g 0 -o 0 -d debian/luaflare-service/usr/share/doc/luaflare-service
+	install -g 0 -o 0 -m 644 -p debian/copyright debian/luaflare-service/usr/share/doc/luaflare-service/copyright
+	install -g 0 -o 0 -d debian/luaflare-reverseproxy-nginx/usr/share/doc/luaflare-reverseproxy-nginx
+	install -g 0 -o 0 -m 644 -p debian/copyright debian/luaflare-reverseproxy-nginx/usr/share/doc/luaflare-reverseproxy-nginx/copyright
+	install -g 0 -o 0 -d debian/luaflare-reverseproxy-apache/usr/share/doc/luaflare-reverseproxy-apache
+	install -g 0 -o 0 -m 644 -p debian/copyright debian/luaflare-reverseproxy-apache/usr/share/doc/luaflare-reverseproxy-apache/copyright
+make[1]: Leaving directory '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+   dh_installchangelogs
+	install -o 0 -g 0 -p -m644 debian/changelog debian/luaflare/usr/share/doc/luaflare/changelog
+	install -o 0 -g 0 -p -m644 debian/changelog debian/luaflare-service/usr/share/doc/luaflare-service/changelog
+	install -o 0 -g 0 -p -m644 debian/changelog debian/luaflare-reverseproxy-nginx/usr/share/doc/luaflare-reverseproxy-nginx/changelog
+	install -o 0 -g 0 -p -m644 debian/changelog debian/luaflare-reverseproxy-apache/usr/share/doc/luaflare-reverseproxy-apache/changelog
+   dh_installman
+	install -p -m644 thirdparty/docs/luaflare.1 debian/luaflare/usr/share/man/man1/luaflare.1
+	man --recode UTF-8 ./luaflare\.1 > luaflare\.1\.new
+	chmod 644 luaflare.1.new
+	mv -f luaflare.1.new luaflare.1
+   dh_installdebconf
+	install -o 0 -g 0 -d debian/luaflare/DEBIAN
+	install -o 0 -g 0 -d debian/luaflare-service/DEBIAN
+	install -o 0 -g 0 -d debian/luaflare-reverseproxy-nginx/DEBIAN
+	sed s/#DEBHELPER#// < debian/luaflare-reverseproxy-nginx.config > debian/luaflare-reverseproxy-nginx/DEBIAN/config
+	chown 0:0 debian/luaflare-reverseproxy-nginx/DEBIAN/config
+	chmod 755 debian/luaflare-reverseproxy-nginx/DEBIAN/config
+	po2debconf  debian/luaflare-reverseproxy-nginx.templates > debian/luaflare-reverseproxy-nginx/DEBIAN/templates
+	(grep -s -v misc:Depends debian/luaflare-reverseproxy-nginx.substvars; echo "misc:Depends=debconf (>= 0.5) | debconf-2.0") > debian/luaflare-reverseproxy-nginx.substvars.new
+	mv debian/luaflare-reverseproxy-nginx.substvars.new debian/luaflare-reverseproxy-nginx.substvars
+	echo "# Automatically added by dh_installdebconf">> debian/luaflare-reverseproxy-nginx.postrm.debhelper
+	sed "" /usr/share/debhelper/autoscripts/postrm-debconf >> debian/luaflare-reverseproxy-nginx.postrm.debhelper
+	echo '# End automatically added section' >> debian/luaflare-reverseproxy-nginx.postrm.debhelper
+	install -o 0 -g 0 -d debian/luaflare-reverseproxy-apache/DEBIAN
+   debian/rules override_dh_systemd_enable
+make[1]: Entering directory '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+dh_systemd_enable --name=luaflare
+	install -d debian/luaflare-service/lib/systemd/system
+	install -p -m644 debian/luaflare-service.luaflare.service debian/luaflare-service/lib/systemd/system/luaflare.service
+	echo "# Automatically added by dh_systemd_enable">> debian/luaflare-service.postinst.debhelper
+	sed "s/#UNITFILE#/luaflare.service/" /usr/share/debhelper/autoscripts/postinst-systemd-enable >> debian/luaflare-service.postinst.debhelper
+	echo '# End automatically added section' >> debian/luaflare-service.postinst.debhelper
+	echo "# Automatically added by dh_systemd_enable">> debian/luaflare-service.postrm.debhelper
+	sed "s/#UNITFILES#/luaflare.service/" /usr/share/debhelper/autoscripts/postrm-systemd >> debian/luaflare-service.postrm.debhelper
+	echo '# End automatically added section' >> debian/luaflare-service.postrm.debhelper
+	(grep -s -v misc:Depends debian/luaflare-service.substvars; echo "misc:Depends=init-system-helpers (>= 1.18~)") > debian/luaflare-service.substvars.new
+	mv debian/luaflare-service.substvars.new debian/luaflare-service.substvars
+make[1]: Leaving directory '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+   debian/rules override_dh_installinit
+make[1]: Entering directory '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+dh_installinit --name=luaflare
+	install -p -m644 debian/luaflare-service.luaflare.service debian/luaflare-service/lib/systemd/system/luaflare.service
+	install -d debian/luaflare-service/etc/init
+	install -p -m644 debian/luaflare-service.luaflare.upstart debian/luaflare-service/etc/init/luaflare.conf
+	install -d debian/luaflare-service/etc/init.d
+	install -p -m755 debian/luaflare-service.luaflare.init debian/luaflare-service/etc/init.d/luaflare
+	echo "# Automatically added by dh_installinit">> debian/luaflare-service.postinst.debhelper
+	sed "s/#SCRIPT#/luaflare/;s/#INITPARMS#/defaults/;s/#ERROR_HANDLER#/exit \$?/" /usr/share/debhelper/autoscripts/postinst-init >> debian/luaflare-service.postinst.debhelper
+	echo '# End automatically added section' >> debian/luaflare-service.postinst.debhelper
+	echo "# Automatically added by dh_installinit">> debian/luaflare-service.prerm.debhelper
+	sed "s/#SCRIPT#/luaflare/;s/#INITPARMS#/defaults/;s/#ERROR_HANDLER#/exit \$?/" /usr/share/debhelper/autoscripts/prerm-init >> debian/luaflare-service.prerm.debhelper
+	echo '# End automatically added section' >> debian/luaflare-service.prerm.debhelper
+	echo "# Automatically added by dh_installinit"> debian/luaflare-service.postrm.debhelper.new
+	sed "s/#SCRIPT#/luaflare/;s/#INITPARMS#/defaults/;s/#ERROR_HANDLER#/exit \$?/" /usr/share/debhelper/autoscripts/postrm-init >> debian/luaflare-service.postrm.debhelper.new
+	echo '# End automatically added section' >> debian/luaflare-service.postrm.debhelper.new
+	cat debian/luaflare-service.postrm.debhelper >> debian/luaflare-service.postrm.debhelper.new
+	mv debian/luaflare-service.postrm.debhelper.new debian/luaflare-service.postrm.debhelper
+make[1]: Leaving directory '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+   dh_systemd_start
+   dh_perl
+   dh_link
+   dh_compress
+	cd debian/luaflare
+	chmod a-x usr/share/man/man1/luaflare.1 usr/share/doc/luaflare/changelog
+	gzip -9nf usr/share/man/man1/luaflare.1 usr/share/doc/luaflare/changelog
+	cd '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+	cd debian/luaflare-service
+	chmod a-x usr/share/doc/luaflare-service/changelog
+	gzip -9nf usr/share/doc/luaflare-service/changelog
+	cd '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+	cd debian/luaflare-reverseproxy-nginx
+	chmod a-x usr/share/doc/luaflare-reverseproxy-nginx/changelog
+	gzip -9nf usr/share/doc/luaflare-reverseproxy-nginx/changelog
+	cd '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+	cd debian/luaflare-reverseproxy-apache
+	chmod a-x usr/share/doc/luaflare-reverseproxy-apache/changelog
+	gzip -9nf usr/share/doc/luaflare-reverseproxy-apache/changelog
+	cd '/home/kobra/Dropbox/Projects/LuaFlare-debian'
+   dh_fixperms
+	find debian/luaflare  -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/luaflare ! -type l  -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/luaflare/usr/share/doc -type f  ! -regex 'debian/luaflare/usr/share/doc/[^/]*/examples/.*' -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare/usr/share/doc -type d  -print0 2>/dev/null | xargs -0r chmod 755
+	find debian/luaflare/usr/share/man debian/luaflare/usr/man/ debian/luaflare/usr/X11*/man/ -type f  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare -perm -5 -type f \( -name '*.so.*' -or -name '*.so' -or -name '*.la' -or -name '*.a' \)  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare/usr/include -type f  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare/usr/share/applications -type f  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare -perm -5 -type f \( -name '*.cmxs' \)  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare/usr/lib/x86_64-linux-gnu/perl5/5.20 debian/luaflare/usr/share/perl5 -type f -perm -5 -name '*.pm'  -print0 2>/dev/null | xargs -0r chmod a-X
+	find debian/luaflare/usr/bin -type f  -print0 2>/dev/null | xargs -0r chmod a+x
+	find debian/luaflare/usr/lib -type f -name '*.ali'  -print0 2>/dev/null | xargs -0r chmod uga-w
+	find debian/luaflare-service  -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/luaflare-service ! -type l  -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/luaflare-service/usr/share/doc -type f  ! -regex 'debian/luaflare-service/usr/share/doc/[^/]*/examples/.*' -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-service/usr/share/doc -type d  -print0 2>/dev/null | xargs -0r chmod 755
+	find debian/luaflare-service/usr/share/man debian/luaflare-service/usr/man/ debian/luaflare-service/usr/X11*/man/ -type f  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-service -perm -5 -type f \( -name '*.so.*' -or -name '*.so' -or -name '*.la' -or -name '*.a' \)  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-service/usr/include -type f  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-service/usr/share/applications -type f  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-service -perm -5 -type f \( -name '*.cmxs' \)  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-service/usr/lib/x86_64-linux-gnu/perl5/5.20 debian/luaflare-service/usr/share/perl5 -type f -perm -5 -name '*.pm'  -print0 2>/dev/null | xargs -0r chmod a-X
+	find debian/luaflare-service/etc/init.d -type f  -print0 2>/dev/null | xargs -0r chmod a+x
+	find debian/luaflare-service/usr/lib -type f -name '*.ali'  -print0 2>/dev/null | xargs -0r chmod uga-w
+	find debian/luaflare-reverseproxy-nginx  -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/luaflare-reverseproxy-nginx ! -type l  -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/luaflare-reverseproxy-nginx/usr/share/doc -type f  ! -regex 'debian/luaflare-reverseproxy-nginx/usr/share/doc/[^/]*/examples/.*' -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-reverseproxy-nginx/usr/share/doc -type d  -print0 2>/dev/null | xargs -0r chmod 755
+	find debian/luaflare-reverseproxy-nginx/usr/share/man debian/luaflare-reverseproxy-nginx/usr/man/ debian/luaflare-reverseproxy-nginx/usr/X11*/man/ -type f  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-reverseproxy-nginx -perm -5 -type f \( -name '*.so.*' -or -name '*.so' -or -name '*.la' -or -name '*.a' \)  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-reverseproxy-nginx/usr/include -type f  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-reverseproxy-nginx/usr/share/applications -type f  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-reverseproxy-nginx -perm -5 -type f \( -name '*.cmxs' \)  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-reverseproxy-nginx/usr/lib/x86_64-linux-gnu/perl5/5.20 debian/luaflare-reverseproxy-nginx/usr/share/perl5 -type f -perm -5 -name '*.pm'  -print0 2>/dev/null | xargs -0r chmod a-X
+	find debian/luaflare-reverseproxy-nginx/usr/lib -type f -name '*.ali'  -print0 2>/dev/null | xargs -0r chmod uga-w
+	find debian/luaflare-reverseproxy-apache  -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/luaflare-reverseproxy-apache ! -type l  -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/luaflare-reverseproxy-apache/usr/share/doc -type f  ! -regex 'debian/luaflare-reverseproxy-apache/usr/share/doc/[^/]*/examples/.*' -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-reverseproxy-apache/usr/share/doc -type d  -print0 2>/dev/null | xargs -0r chmod 755
+	find debian/luaflare-reverseproxy-apache/usr/share/man debian/luaflare-reverseproxy-apache/usr/man/ debian/luaflare-reverseproxy-apache/usr/X11*/man/ -type f  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-reverseproxy-apache -perm -5 -type f \( -name '*.so.*' -or -name '*.so' -or -name '*.la' -or -name '*.a' \)  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-reverseproxy-apache/usr/include -type f  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-reverseproxy-apache/usr/share/applications -type f  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-reverseproxy-apache -perm -5 -type f \( -name '*.cmxs' \)  -print0 2>/dev/null | xargs -0r chmod 644
+	find debian/luaflare-reverseproxy-apache/usr/lib/x86_64-linux-gnu/perl5/5.20 debian/luaflare-reverseproxy-apache/usr/share/perl5 -type f -perm -5 -name '*.pm'  -print0 2>/dev/null | xargs -0r chmod a-X
+	find debian/luaflare-reverseproxy-apache/usr/lib -type f -name '*.ali'  -print0 2>/dev/null | xargs -0r chmod uga-w
+   dh_installdeb
+	printf '#!/bin/sh
+set -e
+' > debian/luaflare/DEBIAN/postinst
+	cat debian/luaflare.postinst.debhelper >> debian/luaflare/DEBIAN/postinst
+	chown 0:0 debian/luaflare/DEBIAN/postinst
+	chmod 755 debian/luaflare/DEBIAN/postinst
+	find debian/luaflare/etc -type f -printf '/etc/%P
+' | LC_ALL=C sort >> debian/luaflare/DEBIAN/conffiles
+	chmod 644 debian/luaflare/DEBIAN/conffiles
+	printf '#!/bin/sh
+set -e
+' > debian/luaflare-service/DEBIAN/postinst
+	cat debian/luaflare-service.postinst.debhelper >> debian/luaflare-service/DEBIAN/postinst
+	chown 0:0 debian/luaflare-service/DEBIAN/postinst
+	chmod 755 debian/luaflare-service/DEBIAN/postinst
+	printf '#!/bin/sh
+set -e
+' > debian/luaflare-service/DEBIAN/prerm
+	cat debian/luaflare-service.prerm.debhelper >> debian/luaflare-service/DEBIAN/prerm
+	chown 0:0 debian/luaflare-service/DEBIAN/prerm
+	chmod 755 debian/luaflare-service/DEBIAN/prerm
+	printf '#!/bin/sh
+set -e
+' > debian/luaflare-service/DEBIAN/postrm
+	cat debian/luaflare-service.postrm.debhelper >> debian/luaflare-service/DEBIAN/postrm
+	chown 0:0 debian/luaflare-service/DEBIAN/postrm
+	chmod 755 debian/luaflare-service/DEBIAN/postrm
+	find debian/luaflare-service/etc -type f -printf '/etc/%P
+' | LC_ALL=C sort >> debian/luaflare-service/DEBIAN/conffiles
+	chmod 644 debian/luaflare-service/DEBIAN/conffiles
+	printf '#!/bin/sh
+set -e
+' > debian/luaflare-reverseproxy-nginx/DEBIAN/postinst
+	cat debian/luaflare-reverseproxy-nginx.postinst.debhelper >> debian/luaflare-reverseproxy-nginx/DEBIAN/postinst
+	chown 0:0 debian/luaflare-reverseproxy-nginx/DEBIAN/postinst
+	chmod 755 debian/luaflare-reverseproxy-nginx/DEBIAN/postinst
+	printf '#!/bin/sh
+set -e
+' > debian/luaflare-reverseproxy-nginx/DEBIAN/postrm
+	cat debian/luaflare-reverseproxy-nginx.postrm.debhelper >> debian/luaflare-reverseproxy-nginx/DEBIAN/postrm
+	chown 0:0 debian/luaflare-reverseproxy-nginx/DEBIAN/postrm
+	chmod 755 debian/luaflare-reverseproxy-nginx/DEBIAN/postrm
+	find debian/luaflare-reverseproxy-nginx/etc -type f -printf '/etc/%P
+' | LC_ALL=C sort >> debian/luaflare-reverseproxy-nginx/DEBIAN/conffiles
+	chmod 644 debian/luaflare-reverseproxy-nginx/DEBIAN/conffiles
+	printf '#!/bin/sh
+set -e
+' > debian/luaflare-reverseproxy-apache/DEBIAN/postinst
+	cat debian/luaflare-reverseproxy-apache.postinst.debhelper >> debian/luaflare-reverseproxy-apache/DEBIAN/postinst
+	chown 0:0 debian/luaflare-reverseproxy-apache/DEBIAN/postinst
+	chmod 755 debian/luaflare-reverseproxy-apache/DEBIAN/postinst
+	find debian/luaflare-reverseproxy-apache/etc -type f -printf '/etc/%P
+' | LC_ALL=C sort >> debian/luaflare-reverseproxy-apache/DEBIAN/conffiles
+	chmod 644 debian/luaflare-reverseproxy-apache/DEBIAN/conffiles
+   dh_gencontrol
+	echo misc:Depends= >> debian/luaflare.substvars
+	dpkg-gencontrol -pluaflare -ldebian/changelog -Tdebian/luaflare.substvars -Pdebian/luaflare
+dpkg-gencontrol: warning: Depends field of package luaflare: unknown substitution variable ${shlibs:Depends}
+	chmod 644 debian/luaflare/DEBIAN/control
+	chown 0:0 debian/luaflare/DEBIAN/control
+	dpkg-gencontrol -pluaflare-service -ldebian/changelog -Tdebian/luaflare-service.substvars -Pdebian/luaflare-service
+	chmod 644 debian/luaflare-service/DEBIAN/control
+	chown 0:0 debian/luaflare-service/DEBIAN/control
+	dpkg-gencontrol -pluaflare-reverseproxy-nginx -ldebian/changelog -Tdebian/luaflare-reverseproxy-nginx.substvars -Pdebian/luaflare-reverseproxy-nginx
+	chmod 644 debian/luaflare-reverseproxy-nginx/DEBIAN/control
+	chown 0:0 debian/luaflare-reverseproxy-nginx/DEBIAN/control
+	echo misc:Depends= >> debian/luaflare-reverseproxy-apache.substvars
+	dpkg-gencontrol -pluaflare-reverseproxy-apache -ldebian/changelog -Tdebian/luaflare-reverseproxy-apache.substvars -Pdebian/luaflare-reverseproxy-apache
+	chmod 644 debian/luaflare-reverseproxy-apache/DEBIAN/control
+	chown 0:0 debian/luaflare-reverseproxy-apache/DEBIAN/control
+   dh_md5sums
+	(cd debian/luaflare >/dev/null ; find . -type f ! -path "./etc/bash_completion.d/luaflare" ! -path "./etc/default/luaflare" ! -path "./etc/luaflare/keys/generatekey.sh" ! -path "./etc/luaflare/lua/ar_defaulterrors.lua" ! -path "./etc/luaflare/lua/ar_exampleerror.lua" ! -path "./etc/luaflare/lua/ar_main.lua" ! -path "./etc/luaflare/lua/ar_static.lua" ! -path "./etc/luaflare/lua/ar_stats.lua" ! -path "./etc/luaflare/lua/ar_systemd.lua" ! -path "./etc/luaflare/lua/ar_sysvinit.lua" ! -path "./etc/luaflare/lua/template-error.lua" ! -path "./etc/luaflare/lua/template-stats.lua" ! -path "./etc/luaflare/luaflare.cfg" ! -path "./etc/luaflare/static/*/luaflare/Proxima Nova-Regular.otf" ! -path "./etc/luaflare/static/*/luaflare/lua_logo.png" ! -path "./etc/luaflare/static/*/luaflare/moon.png" ! -path "./etc/luaflare/static/*/luaflare/mountain-silhouette.png" ! -path "./etc/luaflare/static/*/luaflare/space.png" ! -path "./etc/luaflare/static/*/stats/jquery.csv-0.71.min.js"  ! -regex './DEBIAN/.*' -printf '%P\0' | LC_ALL=C sort -z | xargs -r0 md5sum > DEBIAN/md5sums) >/dev/null
+	chmod 644 debian/luaflare/DEBIAN/md5sums
+	chown 0:0 debian/luaflare/DEBIAN/md5sums
+	(cd debian/luaflare-service >/dev/null ; find . -type f ! -path "./etc/init.d/luaflare" ! -path "./etc/init/luaflare.conf"  ! -regex './DEBIAN/.*' -printf '%P\0' | LC_ALL=C sort -z | xargs -r0 md5sum > DEBIAN/md5sums) >/dev/null
+	chmod 644 debian/luaflare-service/DEBIAN/md5sums
+	chown 0:0 debian/luaflare-service/DEBIAN/md5sums
+	(cd debian/luaflare-reverseproxy-nginx >/dev/null ; find . -type f ! -path "./etc/nginx/sites-available/luaflare"  ! -regex './DEBIAN/.*' -printf '%P\0' | LC_ALL=C sort -z | xargs -r0 md5sum > DEBIAN/md5sums) >/dev/null
+	chmod 644 debian/luaflare-reverseproxy-nginx/DEBIAN/md5sums
+	chown 0:0 debian/luaflare-reverseproxy-nginx/DEBIAN/md5sums
+	(cd debian/luaflare-reverseproxy-apache >/dev/null ; find . -type f ! -path "./etc/apache2/sites-available/luaflare.conf"  ! -regex './DEBIAN/.*' -printf '%P\0' | LC_ALL=C sort -z | xargs -r0 md5sum > DEBIAN/md5sums) >/dev/null
+	chmod 644 debian/luaflare-reverseproxy-apache/DEBIAN/md5sums
+	chown 0:0 debian/luaflare-reverseproxy-apache/DEBIAN/md5sums
+   dh_builddeb
+	dpkg-deb --build debian/luaflare ..
+dpkg-deb: building package `luaflare' in `../luaflare_2.8_all.deb'.
+	dpkg-deb --build debian/luaflare-service ..
+dpkg-deb: building package `luaflare-service' in `../luaflare-service_2.8_all.deb'.
+	dpkg-deb --build debian/luaflare-reverseproxy-nginx ..
+dpkg-deb: building package `luaflare-reverseproxy-nginx' in `../luaflare-reverseproxy-nginx_2.8_all.deb'.
+	dpkg-deb --build debian/luaflare-reverseproxy-apache ..
+dpkg-deb: building package `luaflare-reverseproxy-apache' in `../luaflare-reverseproxy-apache_2.8_all.deb'.
+ dpkg-genchanges  >../luaflare_2.8_amd64.changes
+dpkg-genchanges: including full source code in upload
+ dpkg-source --after-build LuaFlare-debian
+dpkg-buildpackage: full upload; Debian-native package (full source is included)
+Now running lintian...
+W: luaflare source: missing-templates-pot
+W: luaflare-service: unusual-interpreter etc/init.d/luaflare #!/lib/init/init-d-script
+W: luaflare: script-not-executable etc/bash_completion.d/luaflare
+N: 1 tag overridden (1 error)
+Finished running lintian.
+Now signing changes and any dsc files...
+ signfile luaflare_2.8.dsc Kate Adams <self@kateadams.eu>
+
+ signfile luaflare_2.8_amd64.changes Kate Adams <self@kateadams.eu>
+
+Successfully signed dsc and changes files

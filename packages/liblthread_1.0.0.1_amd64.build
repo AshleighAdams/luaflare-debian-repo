@@ -1,0 +1,245 @@
+ dpkg-buildpackage -rfakeroot -D -us -uc
+dpkg-buildpackage: source package liblthread
+dpkg-buildpackage: source version 1.0.0.1
+dpkg-buildpackage: source distribution unstable
+dpkg-buildpackage: source changed by Kate Adams <self@kateadams.eu>
+ dpkg-source --before-build lthread
+dpkg-buildpackage: host architecture amd64
+ fakeroot debian/rules clean
+dh clean --parallel --buildsystem=cmake --sourcedirectory=.
+   dh_testdir -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+   dh_auto_clean -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+   dh_clean -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+ dpkg-source -b lthread
+dpkg-source: info: using source format '3.0 (native)'
+dpkg-source: info: building liblthread in liblthread_1.0.0.1.tar.xz
+dpkg-source: info: building liblthread in liblthread_1.0.0.1.dsc
+ debian/rules build
+dh build --parallel --buildsystem=cmake --sourcedirectory=.
+   dh_testdir -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+   dh_auto_configure -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=None
+-- The C compiler identification is GNU 4.9.3
+-- The CXX compiler identification is GNU 4.9.3
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu
+   dh_auto_build -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+	make -j1
+make[1]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+/usr/bin/cmake -H/mnt/hdd/kobra/.build/lthread -B/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles/progress.marks
+make -f CMakeFiles/Makefile2 all
+make[2]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+make -f CMakeFiles/lthread.dir/build.make CMakeFiles/lthread.dir/depend
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+cd /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /mnt/hdd/kobra/.build/lthread /mnt/hdd/kobra/.build/lthread /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles/lthread.dir/DependInfo.cmake --color=
+Scanning dependencies of target lthread
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+make -f CMakeFiles/lthread.dir/build.make CMakeFiles/lthread.dir/build
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+/usr/bin/cmake -E cmake_progress_report /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles 1
+[ 11%] Building C object CMakeFiles/lthread.dir/src/lthread.c.o
+/usr/bin/cc  -Dlthread_EXPORTS -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2  -Werror -g -Wall -fPIC -I/mnt/hdd/kobra/.build/lthread/src    -O2 -o CMakeFiles/lthread.dir/src/lthread.c.o   -c /mnt/hdd/kobra/.build/lthread/src/lthread.c
+/usr/bin/cmake -E cmake_progress_report /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles 2
+[ 22%] Building C object CMakeFiles/lthread.dir/src/lthread_socket.c.o
+/usr/bin/cc  -Dlthread_EXPORTS -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2  -Werror -g -Wall -fPIC -I/mnt/hdd/kobra/.build/lthread/src    -O2 -o CMakeFiles/lthread.dir/src/lthread_socket.c.o   -c /mnt/hdd/kobra/.build/lthread/src/lthread_socket.c
+/usr/bin/cmake -E cmake_progress_report /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles 3
+[ 33%] Building C object CMakeFiles/lthread.dir/src/lthread_sched.c.o
+/usr/bin/cc  -Dlthread_EXPORTS -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2  -Werror -g -Wall -fPIC -I/mnt/hdd/kobra/.build/lthread/src    -O2 -o CMakeFiles/lthread.dir/src/lthread_sched.c.o   -c /mnt/hdd/kobra/.build/lthread/src/lthread_sched.c
+/usr/bin/cmake -E cmake_progress_report /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles 4
+[ 44%] Building C object CMakeFiles/lthread.dir/src/lthread_io.c.o
+/usr/bin/cc  -Dlthread_EXPORTS -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2  -Werror -g -Wall -fPIC -I/mnt/hdd/kobra/.build/lthread/src    -O2 -o CMakeFiles/lthread.dir/src/lthread_io.c.o   -c /mnt/hdd/kobra/.build/lthread/src/lthread_io.c
+/usr/bin/cmake -E cmake_progress_report /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles 5
+[ 55%] Building C object CMakeFiles/lthread.dir/src/lthread_poller.c.o
+/usr/bin/cc  -Dlthread_EXPORTS -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2  -Werror -g -Wall -fPIC -I/mnt/hdd/kobra/.build/lthread/src    -O2 -o CMakeFiles/lthread.dir/src/lthread_poller.c.o   -c /mnt/hdd/kobra/.build/lthread/src/lthread_poller.c
+/usr/bin/cmake -E cmake_progress_report /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles 6
+[ 66%] Building C object CMakeFiles/lthread.dir/src/lthread_compute.c.o
+/usr/bin/cc  -Dlthread_EXPORTS -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2  -Werror -g -Wall -fPIC -I/mnt/hdd/kobra/.build/lthread/src    -O2 -o CMakeFiles/lthread.dir/src/lthread_compute.c.o   -c /mnt/hdd/kobra/.build/lthread/src/lthread_compute.c
+Linking C shared library liblthread.so
+/usr/bin/cmake -E cmake_link_script CMakeFiles/lthread.dir/link.txt --verbose=1
+/usr/bin/cc  -fPIC -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2  -Werror -g -Wall  -Wl,-z,relro -shared -Wl,-soname,liblthread.so -o liblthread.so CMakeFiles/lthread.dir/src/lthread.c.o CMakeFiles/lthread.dir/src/lthread_socket.c.o CMakeFiles/lthread.dir/src/lthread_sched.c.o CMakeFiles/lthread.dir/src/lthread_io.c.o CMakeFiles/lthread.dir/src/lthread_poller.c.o CMakeFiles/lthread.dir/src/lthread_compute.c.o 
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+/usr/bin/cmake -E cmake_progress_report /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles  1 2 3 4 5 6
+[ 66%] Built target lthread
+make -f CMakeFiles/lthread_io.dir/build.make CMakeFiles/lthread_io.dir/depend
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+cd /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /mnt/hdd/kobra/.build/lthread /mnt/hdd/kobra/.build/lthread /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles/lthread_io.dir/DependInfo.cmake --color=
+Scanning dependencies of target lthread_io
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+make -f CMakeFiles/lthread_io.dir/build.make CMakeFiles/lthread_io.dir/build
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+/usr/bin/cmake -E cmake_progress_report /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles 7
+[ 77%] Building C object CMakeFiles/lthread_io.dir/tests/lthread_io.c.o
+/usr/bin/cc   -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2  -Werror -g -Wall -I/mnt/hdd/kobra/.build/lthread/src    -o CMakeFiles/lthread_io.dir/tests/lthread_io.c.o   -c /mnt/hdd/kobra/.build/lthread/tests/lthread_io.c
+Linking C executable ../tests/lthread_io
+/usr/bin/cmake -E cmake_link_script CMakeFiles/lthread_io.dir/link.txt --verbose=1
+/usr/bin/cc  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2  -Werror -g -Wall   -Wl,-z,relro CMakeFiles/lthread_io.dir/tests/lthread_io.c.o  -o ../tests/lthread_io -rdynamic liblthread.so -lpthread -Wl,-rpath,/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu 
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+/usr/bin/cmake -E cmake_progress_report /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles  7
+[ 77%] Built target lthread_io
+make -f CMakeFiles/lthread_join.dir/build.make CMakeFiles/lthread_join.dir/depend
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+cd /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /mnt/hdd/kobra/.build/lthread /mnt/hdd/kobra/.build/lthread /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles/lthread_join.dir/DependInfo.cmake --color=
+Scanning dependencies of target lthread_join
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+make -f CMakeFiles/lthread_join.dir/build.make CMakeFiles/lthread_join.dir/build
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+/usr/bin/cmake -E cmake_progress_report /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles 8
+[ 88%] Building C object CMakeFiles/lthread_join.dir/tests/lthread_join.c.o
+/usr/bin/cc   -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2  -Werror -g -Wall -I/mnt/hdd/kobra/.build/lthread/src    -o CMakeFiles/lthread_join.dir/tests/lthread_join.c.o   -c /mnt/hdd/kobra/.build/lthread/tests/lthread_join.c
+Linking C executable ../tests/lthread_join
+/usr/bin/cmake -E cmake_link_script CMakeFiles/lthread_join.dir/link.txt --verbose=1
+/usr/bin/cc  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2  -Werror -g -Wall   -Wl,-z,relro CMakeFiles/lthread_join.dir/tests/lthread_join.c.o  -o ../tests/lthread_join -rdynamic liblthread.so -lpthread -Wl,-rpath,/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu 
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+/usr/bin/cmake -E cmake_progress_report /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles  8
+[ 88%] Built target lthread_join
+make -f CMakeFiles/lthread_sleep.dir/build.make CMakeFiles/lthread_sleep.dir/depend
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+cd /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /mnt/hdd/kobra/.build/lthread /mnt/hdd/kobra/.build/lthread /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles/lthread_sleep.dir/DependInfo.cmake --color=
+Scanning dependencies of target lthread_sleep
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+make -f CMakeFiles/lthread_sleep.dir/build.make CMakeFiles/lthread_sleep.dir/build
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+/usr/bin/cmake -E cmake_progress_report /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles 9
+[100%] Building C object CMakeFiles/lthread_sleep.dir/tests/lthread_sleep.c.o
+/usr/bin/cc   -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2  -Werror -g -Wall -I/mnt/hdd/kobra/.build/lthread/src    -o CMakeFiles/lthread_sleep.dir/tests/lthread_sleep.c.o   -c /mnt/hdd/kobra/.build/lthread/tests/lthread_sleep.c
+Linking C executable ../tests/lthread_sleep
+/usr/bin/cmake -E cmake_link_script CMakeFiles/lthread_sleep.dir/link.txt --verbose=1
+/usr/bin/cc  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2  -Werror -g -Wall   -Wl,-z,relro CMakeFiles/lthread_sleep.dir/tests/lthread_sleep.c.o  -o ../tests/lthread_sleep -rdynamic liblthread.so -lpthread -Wl,-rpath,/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu 
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+/usr/bin/cmake -E cmake_progress_report /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles  9
+[100%] Built target lthread_sleep
+make[2]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+/usr/bin/cmake -E cmake_progress_start /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles 0
+make[1]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+   dh_auto_test -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+	make -j1 test ARGS\+=-j1
+make[1]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+Running tests...
+/usr/bin/ctest --force-new-ctest-process -j1
+Test project /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu
+    Start 1: lthread_sleep
+1/2 Test #1: lthread_sleep ....................   Passed    9.00 sec
+    Start 2: lthread_join
+2/2 Test #2: lthread_join .....................   Passed    4.00 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =  13.01 sec
+make[1]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+ fakeroot debian/rules binary
+dh binary --parallel --buildsystem=cmake --sourcedirectory=.
+   dh_testroot -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+   dh_prep -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+   dh_auto_install -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+	make -j1 install DESTDIR=/mnt/hdd/kobra/.build/lthread/debian/tmp AM_UPDATE_INFO_DIR=no
+make[1]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+/usr/bin/cmake -H/mnt/hdd/kobra/.build/lthread -B/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles/progress.marks
+make -f CMakeFiles/Makefile2 all
+make[2]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+make -f CMakeFiles/lthread.dir/build.make CMakeFiles/lthread.dir/depend
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+cd /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /mnt/hdd/kobra/.build/lthread /mnt/hdd/kobra/.build/lthread /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles/lthread.dir/DependInfo.cmake --color=
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+make -f CMakeFiles/lthread.dir/build.make CMakeFiles/lthread.dir/build
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+make[3]: Nothing to be done for 'CMakeFiles/lthread.dir/build'.
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+/usr/bin/cmake -E cmake_progress_report /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles  1 2 3 4 5 6
+[ 66%] Built target lthread
+make -f CMakeFiles/lthread_io.dir/build.make CMakeFiles/lthread_io.dir/depend
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+cd /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /mnt/hdd/kobra/.build/lthread /mnt/hdd/kobra/.build/lthread /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles/lthread_io.dir/DependInfo.cmake --color=
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+make -f CMakeFiles/lthread_io.dir/build.make CMakeFiles/lthread_io.dir/build
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+make[3]: Nothing to be done for 'CMakeFiles/lthread_io.dir/build'.
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+/usr/bin/cmake -E cmake_progress_report /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles  7
+[ 77%] Built target lthread_io
+make -f CMakeFiles/lthread_join.dir/build.make CMakeFiles/lthread_join.dir/depend
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+cd /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /mnt/hdd/kobra/.build/lthread /mnt/hdd/kobra/.build/lthread /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles/lthread_join.dir/DependInfo.cmake --color=
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+make -f CMakeFiles/lthread_join.dir/build.make CMakeFiles/lthread_join.dir/build
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+make[3]: Nothing to be done for 'CMakeFiles/lthread_join.dir/build'.
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+/usr/bin/cmake -E cmake_progress_report /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles  8
+[ 88%] Built target lthread_join
+make -f CMakeFiles/lthread_sleep.dir/build.make CMakeFiles/lthread_sleep.dir/depend
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+cd /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /mnt/hdd/kobra/.build/lthread /mnt/hdd/kobra/.build/lthread /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles/lthread_sleep.dir/DependInfo.cmake --color=
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+make -f CMakeFiles/lthread_sleep.dir/build.make CMakeFiles/lthread_sleep.dir/build
+make[3]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+make[3]: Nothing to be done for 'CMakeFiles/lthread_sleep.dir/build'.
+make[3]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+/usr/bin/cmake -E cmake_progress_report /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles  9
+[100%] Built target lthread_sleep
+make[2]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+/usr/bin/cmake -E cmake_progress_start /mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu/CMakeFiles 0
+make -f CMakeFiles/Makefile2 preinstall
+make[2]: Entering directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+make[2]: Nothing to be done for 'preinstall'.
+make[2]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+Install the project...
+/usr/bin/cmake -P cmake_install.cmake
+-- Install configuration: "release"
+-- Installing: /mnt/hdd/kobra/.build/lthread/debian/tmp/usr/lib/liblthread.so
+-- Installing: /mnt/hdd/kobra/.build/lthread/debian/tmp/usr/include/lthread.h
+make[1]: Leaving directory '/mnt/hdd/kobra/.build/lthread/obj-x86_64-linux-gnu'
+   dh_install -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+   dh_installdocs -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+   dh_installchangelogs -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+   dh_perl -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+   dh_link -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+   dh_compress -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+   dh_fixperms -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+   dh_strip -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+   dh_makeshlibs -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+   dh_shlibdeps -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+dpkg-shlibdeps: warning: symbol pthread_create used by debian/liblthread/usr/lib/x86_64-linux-gnu/liblthread.so found in none of the libraries
+dpkg-shlibdeps: warning: symbol pthread_setspecific used by debian/liblthread/usr/lib/x86_64-linux-gnu/liblthread.so found in none of the libraries
+dpkg-shlibdeps: warning: symbol pthread_getspecific used by debian/liblthread/usr/lib/x86_64-linux-gnu/liblthread.so found in none of the libraries
+dpkg-shlibdeps: warning: symbol pthread_detach used by debian/liblthread/usr/lib/x86_64-linux-gnu/liblthread.so found in none of the libraries
+dpkg-shlibdeps: warning: symbol pthread_once used by debian/liblthread/usr/lib/x86_64-linux-gnu/liblthread.so found in none of the libraries
+dpkg-shlibdeps: warning: symbol pthread_key_create used by debian/liblthread/usr/lib/x86_64-linux-gnu/liblthread.so found in none of the libraries
+   dh_installdeb -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+   dh_gencontrol -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+dpkg-gencontrol: warning: File::FcntlLock not available; using flock which is not NFS-safe
+dpkg-gencontrol: warning: File::FcntlLock not available; using flock which is not NFS-safe
+   dh_md5sums -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+   dh_builddeb -O--parallel -O--buildsystem=cmake -O--sourcedirectory=.
+dpkg-deb: building package 'liblthread' in '../liblthread_1.0.0.1_amd64.deb'.
+dpkg-deb: building package 'liblthread-dev' in '../liblthread-dev_1.0.0.1_all.deb'.
+ dpkg-genchanges  >../liblthread_1.0.0.1_amd64.changes
+dpkg-genchanges: including full source code in upload
+ dpkg-source --after-build lthread
+dpkg-buildpackage: full upload; Debian-native package (full source is included)
+Now running lintian...
+W: liblthread source: debhelper-but-no-misc-depends liblthread-dev
+W: liblthread source: maintainer-script-lacks-debhelper-token debian/liblthread.postinst
+W: liblthread source: no-debian-copyright
+W: liblthread source: out-of-date-standards-version 3.9.5 (current is 3.9.6)
+E: liblthread: no-copyright-file
+W: liblthread: dev-pkg-without-shlib-symlink usr/lib/x86_64-linux-gnu/liblthread.so usr/lib/x86_64-linux-gnu/liblthread.so
+W: liblthread: shlib-without-versioned-soname usr/lib/x86_64-linux-gnu/liblthread.so liblthread.so
+E: liblthread-dev: no-copyright-file
+Finished running lintian.
+Now signing changes and any dsc files...
+ signfile liblthread_1.0.0.1.dsc Kate Adams <self@kateadams.eu>
